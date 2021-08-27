@@ -7,7 +7,7 @@ const { DB_NAME, DB_PASSWORD } = process.env;
 //MONGO ATLAS DATA BASE
 mongoose
     .connect(
-        `mongodb+srv://${DB_NAME}:${DB_PASSWORD}@${DB_NAME}.40kxc.mongodb.net/${DB_NAME}?retryWrites=true&w=majority`,
+        `mongodb+srv://car-dealership:${DB_PASSWORD}@car-dealership.40kxc.mongodb.net/${DB_NAME}?retryWrites=true&w=majority`,
         {
         useNewUrlParser: true,
         useUnifiedTopology: true
