@@ -1,3 +1,4 @@
+require("dotenv").config();
 const mongoose = require("mongoose");
 
 const carSchema = new mongoose.Schema({
@@ -13,6 +14,10 @@ const carSchema = new mongoose.Schema({
         type: Number,
         required: true,
     },
+    img: {
+        type: String,
+        required: true,
+    },
     description: {
         type: String,
         required: true,
@@ -20,5 +25,6 @@ const carSchema = new mongoose.Schema({
         max: 500,
     }
 })
+
 
 module.exports = mongoose.model("car", carSchema);
