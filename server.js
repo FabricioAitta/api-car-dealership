@@ -1,10 +1,9 @@
 require("dotenv").config();
-const { SERVER_PORT } = process.env;
 require("./config");
 const express = require('express')
 const app = express()
 const routes = require('./routes')
-const PORT = SERVER_PORT || 3001
+const PORT = process.env.PORT || 3001
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
