@@ -6,6 +6,11 @@ const carSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    brand: {
+        type: Schema.Types.ObjectId,
+        ref: "brand",
+        required: true,
+    },
     owner: {
         type: String,
         required: true,
