@@ -1,9 +1,9 @@
 const express = require('express')
 const router = express.Router()
-const { getAllCars, getCarById, createCar } = require('../controllers/index')
+const { register, login, update } = require('../controllers/index')
 
-router.get('/', getAllCars)
-router.get('/:id', getCarById)
-router.post('/create', createCar)
+router.post('/register', register)
+router.post('/login', login)
+router.post('/update', update)
 
 module.exports = router
