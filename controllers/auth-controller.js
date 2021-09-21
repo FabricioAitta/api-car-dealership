@@ -3,6 +3,7 @@ const User = require('../models/user')
 
 const authController = {
     register: (req, res, next) => {
+        console.log(req.body)
         const {name, email, password} = req.body.user
         User.find({email: email})
         .then((user) => {
