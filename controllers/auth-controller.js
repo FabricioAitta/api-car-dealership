@@ -3,7 +3,7 @@ const User = require('../models/user')
 
 const authController = {
     register: (req, res, next) => {
-        const [name, email, password] = req.body.user
+        const {name, email, password} = req.body.user
         User.find({email: email})
         .then((user) => {
             if(!user){
@@ -18,7 +18,7 @@ const authController = {
         .catch((err) => res.send(err).status(400))
     },
     login: (req, res, next) => {
-        const [name, email, password] = req.body.user
+        const {name, email, password} = req.body.user
         User.find({email: email})
         .then((user) => res.send(user).status(200))
         .catch((err) => res.send(err).status(400))
