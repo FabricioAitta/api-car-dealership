@@ -3,33 +3,30 @@ const User = require('../models/user')
 
 const authController = {
     register: (req, res, next) => {
-        console.log(req.body)
-        const {name, email, password} = req.body.user
+        const {name, email, password} = req.body
         User.find({email: email})
         .then((user) => {
-            if(!user){
-                return User.create({
+            if(user){
+                res.send((user) => res.send(user).status(200))
+            }else{
+                let user_create = new User({
                     name: name,
                     email: email,
                     password: password
                 })
+                return res.status(200).send(user_create)
             }
         })
-        .then((user) => res.send(user).status(200))
         .catch((err) => res.send(err).status(400))
     },
     login: (req, res, next) => {
-        const {name, email, password} = req.body.user
+        const {name, email, password} = req.body
         User.find({email: email})
-        .then((user) => res.send(user).status(200))
-        .catch((err) => res.send(err).status(400))
+        .then((user) => res.status(200).send(user))
+        .catch((err) => res.status(400).send(err))
     },
     update: (req, res, next) => {
         res.send("hola")
-        // const [name, email, password] = req.body.user
-        // User.findOneAndUpdate({email: email})
-        // .then((user) => res.send(user).status(400))
-        // .catch((err) => res.send(err).status(400))
     }
 }
 
