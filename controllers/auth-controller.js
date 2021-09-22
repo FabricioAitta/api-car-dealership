@@ -6,20 +6,22 @@ const authController = {
         const {name, email, password} = req.body
         User.find({email: email})
         .then((user) => {
+            if(user && user.length > 0) res.send(user).status(200)
             let user_create = new User({
                 name: name,
                 email: email,
                 password: password
             })
-            return res.status(200).send(user_create)
+            user_create.save()
+            return res.send(user_create).status(200)
         })
         .catch((err) => res.send(err).status(400))
     },
     login: (req, res, next) => {
         const {name, email, password} = req.body
         User.find({email: email})
-        .then((user) => res.status(200).send(user))
-        .catch((err) => res.status(400).send(err))
+        .then((user) => res.send(user).status(200))
+        .catch((err) => res.send(err).status(400))
     },
     update: (req, res, next) => {
         res.send("hola")
