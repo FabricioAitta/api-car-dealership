@@ -6,16 +6,12 @@ const authController = {
         const {name, email, password} = req.body
         User.find({email: email})
         .then((user) => {
-            if(user){
-                res.send((user) => res.send(user).status(200))
-            }else{
-                let user_create = new User({
-                    name: name,
-                    email: email,
-                    password: password
-                })
-                return res.status(200).send(user_create)
-            }
+            let user_create = new User({
+                name: name,
+                email: email,
+                password: password
+            })
+            return res.status(200).send(user_create)
         })
         .catch((err) => res.send(err).status(400))
     },
