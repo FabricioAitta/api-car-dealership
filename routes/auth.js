@@ -5,6 +5,6 @@ const checkJWT = require('../middleware/Jwt')
 
 router.post('/register', register)
 router.post('/login', login)
-router.post('/update', update)
+router.post('/update', checkJWT, update)
 
 module.exports = router

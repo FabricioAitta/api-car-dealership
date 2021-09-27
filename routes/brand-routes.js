@@ -4,7 +4,7 @@ const { getAllBrands, getAllByBrandId, createBrand } = require('../controllers/i
 const checkJWT = require('../middleware/Jwt')
 
 router.get('/', getAllBrands)
-router.post('/create', createBrand)
+router.post('/create', checkJWT, createBrand)
 router.get('/:id', getAllByBrandId)
 
 module.exports = router

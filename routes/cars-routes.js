@@ -4,7 +4,7 @@ const { getAllCars, getCarById, createCar } = require('../controllers/index')
 const checkJWT = require('../middleware/Jwt')
 
 router.get('/', getAllCars)
-router.post('/create', createCar)
+router.post('/create', checkJWT, createCar)
 router.get('/:id', getCarById)
 
 module.exports = router
