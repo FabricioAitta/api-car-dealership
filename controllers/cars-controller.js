@@ -3,12 +3,19 @@ const Car = require('../models/car')
 
 const carController = {
     getAllCars: (req, res, next) => {
-        Car.find()
-        .then((cars) => res.send(cars).status(200))
-        .catch((err) => res.send(err).status(400))
+        const { brand } = req.query
+        if(brand){
+            Car.find({brand: brand}).populate('brand')
+            .then((cars) => res.send(cars).status(200))
+            .catch((err) => res.send(err).status(400))
+        }else{
+            Car.find()
+            .then((cars) => res.send(cars).status(200))
+            .catch((err) => res.send(err).status(400))
+        }
     },
     getCarById: (req, res, next) => {
-        Car.findById({_id: req.params.id})
+        Car.findById({_id: req.params.id}).populate('brand')
         .then((car) => res.send(car).status(200))
         .catch((err) => res.send(err).status(400))
     },
